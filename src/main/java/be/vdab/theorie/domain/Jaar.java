@@ -1,4 +1,4 @@
-package be.vdab.domain;
+package be.vdab.theorie.domain;
 
 public class Jaar {
     private final int jaar;
@@ -15,5 +15,9 @@ public class Jaar {
     @Override
     public boolean equals(Object obj) {
         return obj instanceof Jaar anderJaar && jaar == anderJaar.jaar;
+    }
+    @Override
+    public int hashCode(){
+        return jaar;
     }
 }

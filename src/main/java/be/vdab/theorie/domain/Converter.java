@@ -1,4 +1,4 @@
-package be.vdab.domain;
+package be.vdab.theorie.domain;
 
 import java.math.BigDecimal;
 

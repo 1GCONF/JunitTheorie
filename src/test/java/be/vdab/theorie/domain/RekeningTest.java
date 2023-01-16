@@ -1,6 +1,7 @@
-package be.vdab.domain;
+package be.vdab.theorie.domain;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,7 +21,6 @@ class RekeningTest {
     }
     @Test
     void nadatJe10€StortIsHetSaldo10€() {
-
         rekening.stort(BigDecimal.TEN);
         assertThat(rekening.getSaldo()).isEqualByComparingTo("10");
     }
@@ -29,5 +29,18 @@ class RekeningTest {
         rekening.stort(BigDecimal.TEN);
         rekening.stort(BigDecimal.ONE);
         assertThat(rekening.getSaldo()).isEqualByComparingTo("11");
+    }
+    // 8.EXCEPTIONS
+    @Test
+    void hetGestorteBedragMagNietNulZijn(){
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> rekening.stort(BigDecimal.ZERO)
+        );
+    }
+    @Test
+    void hetGestortBedragMagNietNegatiefZijn(){
+        assertThatIllegalArgumentException().isThrownBy(
+                () -> rekening.stort(BigDecimal.valueOf(-1))
+        );
     }
 }

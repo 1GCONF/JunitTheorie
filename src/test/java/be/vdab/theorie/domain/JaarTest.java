@@ -1,6 +1,6 @@
-import be.vdab.domain.Jaar;
+package be.vdab.theorie.domain;
+
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatIllegalArgumentException;
 
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -35,4 +35,10 @@ public class JaarTest {
     void jarenMetEenVerschillendJaartalZijnVerschillend(){
         assertThat(new Jaar(2015)).isNotEqualTo(new Jaar(2016));
     }
+    // 7.3 HASHCODE
+    @Test
+    void deHashCodeVanGelijkeJarenIsGelijk(){
+        assertThat(new Jaar(2015)).hasSameHashCodeAs(new Jaar(2015));
+    }
+
 }
